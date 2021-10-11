@@ -1,9 +1,18 @@
-package com.example.songr;
+package com.example.songr.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
+
+
+import javax.persistence.*;
 import java.lang.reflect.Array;
 import java.util.List;
-
+@Entity
 public class Album {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     private String title ;
     private String artist;
@@ -11,15 +20,28 @@ public class Album {
     private double length;
      private String imageUrl;
 
+    public Album() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 
-    public Album(String title, String artist, String imageUrl) {
+    public Album(String title, String artist,double length , int songCount, String imageUrl) {
         this.title = title;
         this.artist = artist;
         this.songCount = songCount;
         this.length = length;
         this.imageUrl = imageUrl;
     }
+
+
 
     public String getTitle() {
         return title;
@@ -60,6 +82,11 @@ public class Album {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+
+
+
+
 }
 
 

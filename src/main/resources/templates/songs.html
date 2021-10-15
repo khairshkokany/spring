@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Songs</title>
+</head>
+<body>
+
+<h1>hello for every singer </h1>
+
+<div>
+    <!-- action is the path to our POST action, method = post -->
+    <form action="songs" method="post">
+        <!-- boring html inputs! the "name" matches the @RequestParam's on the controller -->
+        <p>Album</p><input type="text" name="album"/></br>
+        <p>Title</p><input type="text" name="title"/></br>
+        <p>Length</p><input type="text" name="length"/></br>
+<!--        <p>track Number</p><input type="text" name="trackNumber"/></br>-->
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<!--<tr th:each="Songs: ${songs}">-->
+<!--&lt;!&ndash;    <td th:text="${Songs.title}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;    <br />&ndash;&gt;-->
+<!--    <td th:text="${Songs.title}"></td>-->
+<!--    <br />-->
+<!--    <td th:text="${Songs.album.title}"></td>-->
+<!--    <br />-->
+<!--    <td th:text="${Songs.length}"></td>-->
+<!--    <br />-->
+
+
+
+<!--</tr>-->
+
+<div class="row">
+    <div class="col text-center d-flex justify-content-center" th:each="song : ${songs}">
+        <div class="card" style="width: 18rem;">
+            <img th:src="${song.album.imageUrl}" class="card-img-top" alt="album image">
+
+            <div class="card-body">
+                <h5 class="card-title" th:text="${song.title}"></h5>
+                <div class="card-text">
+                    <p th:text="'Album : '+${song.album.title}"></p>
+                    <p th:text="'Length : '+${song.length}+' Seconds'"></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

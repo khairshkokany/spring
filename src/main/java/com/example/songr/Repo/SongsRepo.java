@@ -1,11 +1,11 @@
 package com.example.songr.Repo;
 
-
-import com.example.songr.model.Album;
+import com.example.songr.model.Song;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AlbumRepo extends JpaRepository<Album, Long> {
-    Album findByTitle(String title);
+public interface SongsRepo extends JpaRepository<Song , Long> {
+Song findByAlbumId(Long album_id);
+
 }
